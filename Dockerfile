@@ -1,13 +1,22 @@
-# Gunakan base image Nginx versi ringan
+# Gunakan base image ringan
 FROM nginx:alpine
 
-# Salin file HTML, CSS, JS ke folder publik default Nginx
+# Tambahkan user non-root
+RUN addgroup -S nonroot && adduser -S nonroot -G nonroot
+
+# Salin file HTML/CSS/JS ke folder Nginx
 COPY index.html /usr/share/nginx/html/
 COPY style.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 
-# Port yang akan diekspos saat container dijalankan
+# Ganti permission agar bisa dibaca oleh nonroot
+RUN chown -R nonroot:nonroot /usr/share/nginx/html
+
+# Gunakan user non-root
+USER nonroot
+
+# Expose port
 EXPOSE 80
 
-# Perintah default menjalankan Nginx
+# Jalankan nginx
 CMD ["nginx", "-g", "daemon off;"]
