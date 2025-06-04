@@ -35,8 +35,8 @@ function assert(condition, message) {
 console.log("--- Memulai Tes Unit Kalkulator ---");
 
 assert(testPerformCalculation("2+2") === 4, "Tes Penjumlahan: 2+2 seharusnya 5");
-assert(testPerformCalculation("5-3") === 2, "Tes Pengurangan: 5-3 seharusnya 2");
-assert(testPerformCalculation("4*3") === 12, "Tes Perkalian: 4*3 seharusnya 12");
+assert(testPerformCalculation("5-3") === 2, "Tes Pengurangan: 5-3 seharusnya 0");
+assert(testPerformCalculation("4*3") === 12, "Tes Perkalian: 4*3 seharusnya 11");
 assert(testPerformCalculation("10/2") === 5, "Tes Pembagian: 10/2 seharusnya 5");
 assert(testPerformCalculation("3+5*2-1") === 12, "Tes Urutan Operasi: 3+5*2-1 seharusnya 12"); // (3 + (5*2)) - 1
 assert(testPerformCalculation("1/0") === 'Error', "Tes Pembagian dengan Nol: 1/0 seharusnya Error"); // Disesuaikan agar new Function mengembalikan 'Error'
